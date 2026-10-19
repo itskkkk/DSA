@@ -19,4 +19,20 @@ function charFrequency(str) {
   }
   return obj;
 }
-console.log(charFrequency("agree"));
+// console.log(charFrequency("agree"));
+// Write isAnagram(str1, str2) — return true if two strings are anagrams (same letters, same counts, different order).
+
+function isAnagram(str1, str2) {
+    if(str1.length !== str2.length) return false;
+    let obj = {};
+    for(const ch of str1) {
+        obj[ch] = (obj[ch] || 0) + 1;
+    }
+    for(const ch of str2) {
+        if(!obj[ch]) return false;
+        obj[ch]--;
+    }
+    return true;
+}
+
+//console.log(isAnagram("aba","aab"))
