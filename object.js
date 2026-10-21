@@ -36,3 +36,13 @@ function isAnagram(str1, str2) {
 }
 
 //console.log(isAnagram("aba","aab"))
+//Write hasDuplicate(arr) — return true if any value appears more than once. Use a Set, not nested loops.
+function hasDuplicate(arr) {
+    let set = new Set();
+    for(const ch of arr) {
+        if(set.has(ch)) return true;
+        set.add(ch)
+    }
+    return false;
+}
+//console.log(hasDuplicate([2,3]))
