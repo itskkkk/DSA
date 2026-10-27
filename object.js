@@ -46,3 +46,16 @@ function hasDuplicate(arr) {
     return false;
 }
 //console.log(hasDuplicate([2,3]))
+// Write firstNonRepeating(str) — return the first character that appears exactly once.
+// Return null if none exists. Must run in O(n).
+function firstNonRepeating(str) {
+    let obj = {};
+    for (const ch of str) {
+        obj[ch] = (obj[ch] || 0) + 1;
+    }
+    for (const ch in obj) {
+        if(obj[ch] === 1) return ch;
+    }
+    return null;
+}
+//console.log(firstNonRepeating("aabbc"));
