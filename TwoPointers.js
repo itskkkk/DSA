@@ -25,3 +25,19 @@ function isPalindrome(str) {
     return true;
 }
 //console.log(isPalindrome("racecar"))
+// Write twoSumSorted(arr, target) — the array is already sorted. 
+// Find two numbers that add up to target and return their indices. 
+// Use two pointers — no hash map needed here.
+function twoSumSorted(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    while(left < right) {
+        let sum = arr[left] + arr[right];
+        if(sum === target) {
+            return [left,right]
+        }else if (sum < target){
+            left++;
+        }else right--;
+    }
+}
+//console.log(twoSumSorted([1,2,3,4,5],9));
