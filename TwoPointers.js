@@ -41,3 +41,18 @@ function twoSumSorted(arr, target) {
     }
 }
 //console.log(twoSumSorted([1,2,3,4,5],9));
+// Write moveZeroes(arr) — move all zeroes to the end while keeping non-zero elements in their original order.
+// Modify in-place, return the array.
+function moveZeroes(arr) {
+    let slow = 0;
+    for(let fast=0; fast<arr.length; fast++){
+        let temp = arr[slow];
+        if(arr[fast] !== 0){
+            arr[slow] = arr[fast];
+            arr[fast] = temp;
+            slow++;
+        }
+    }
+    return arr;
+}
+//console.log(moveZeroes([1,0,3,4,6]));
