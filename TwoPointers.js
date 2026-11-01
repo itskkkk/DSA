@@ -56,3 +56,21 @@ function moveZeroes(arr) {
     return arr;
 }
 //console.log(moveZeroes([1,0,3,4,6]));
+// Write maxWater(heights) — given an array where each value is a wall height, 
+// find two walls that hold the most water between them. Return the maximum water volume.
+
+// Water between walls i and j = Math.min(heights[i], heights[j]) × (j - i)
+function maxWater(heights) {
+    let left = 0;
+    let right = heights.length - 1;
+    let max = 0;
+    while(left<right) {
+        const waterVolume = Math.min(heights[left], heights[right]) * (right - left);
+        max = Math.max(max,waterVolume);
+        if(heights[left] < heights[right]) {
+            left++;
+        } else { right-- };
+    }
+    return max;
+}
+//console.log(maxWater([1,2,3,4,5]));
