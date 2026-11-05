@@ -29,4 +29,20 @@ function minLenSubarray(arr, target) {
     }
     return minLen === Infinity ? 0 : minLen;
 }
-console.log(minLenSubarray([1,2,3,4,5],8))
+//console.log(minLenSubarray([1,2,3,4,5],8))
+//Write longestUnique(str) — return the length of the longest substring with no repeating characters.
+function longestUnique(str) {
+    const seen = new Set();
+    let left = 0;
+    let best = 0;
+    for(let right=0; right<str.length; right++) {
+        while(seen.has(str[right])) {
+            seen.delete(str[left])
+            left++;
+        }
+        seen.add(str[right]);
+        best = Math.max(best, right - left + 1);
+    }
+    return best;
+}
+//console.log(longestUnique("abaakda"))
