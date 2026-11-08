@@ -46,3 +46,19 @@ function longestUnique(str) {
     return best;
 }
 //console.log(longestUnique("abaakda"))
+//Write maxVowels(str, k) — return the maximum number of vowels in any substring of length exactly k.
+function maxVowels(str, k) {
+    let vowels = new Set(["a","e","i","o","u"]);
+    let count = 0;
+    for(let i=0; i<k; i++) {
+        if(vowels.has(str[i])) count++;
+    }
+    let max = count;
+    for(let j=k; j<str.length; j++) {
+        if(vowels.has(str[j])) count++;
+        if(vowels.has(str[j-k])) count--;
+        max = Math.max(max,count)
+    }
+    return max;
+}
+console.log(maxVowels("abcleet",3));
