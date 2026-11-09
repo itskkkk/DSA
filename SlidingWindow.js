@@ -61,4 +61,26 @@ function maxVowels(str, k) {
     }
     return max;
 }
-console.log(maxVowels("abcleet",3));
+//console.log(maxVowels("abcleet",3));
+//Write longestKDistinct(str, k) — return the length of the longest substring containing at most k distinct characters
+function longestKDistinct(str, k) {
+    if(str.length === 0 || k <= 0) return 0;
+    let count = new Map();
+    let left = 0;
+    let best = 0;
+    for(let right=0; right<str.length; right++) {
+        let ch = str[right];
+        count.set(ch, (count.get(ch) || 0) + 1);
+        while(count.size > k){
+            let leftch = str[left];
+            count.set(leftch,count.get(leftch) - 1);
+            if(count.get(leftch) === 0 ) {
+                count.delete(leftch);
+            };
+            left++;
+        }
+        best = Math.max(best, right - left + 1);
+    }
+    return best;
+}
+//console.log(longestKDistinct("aabbccc",2));
