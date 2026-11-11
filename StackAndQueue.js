@@ -32,3 +32,41 @@ function isValid(s) {
     return stack.length === 0;
 } 
 //console.log(isValid("{[()]}"));
+//Build the Queue class with enqueue(val), dequeue(), peek(), size() and isEmpty(). Every operation must be O(1), so no .shift().
+class Queue {
+    constructor() {
+        this.items = {};
+        this.head = 0;
+        this.tail = 0;
+    }
+    enqueue(val) {
+        this.items[this.tail] = val;
+        this.tail++;
+    }
+    dequeue() {
+        if(this.head === this.tail) return undefined;
+        const val = this.items[this.head];
+        delete this.items[this.head];
+        this.head ++;
+        return val;
+    }
+    peek() {
+        return this.items[this.head];
+    }
+    size() {
+        return this.tail - this.head;
+    }
+    isEmpty() {
+        return this.head === this.tail;
+    }
+}
+// let q = new Queue();
+// q.enqueue(1);
+// q.enqueue(2);
+// q.enqueue(3);
+// console.log(q.dequeue());
+// console.log(q);
+// console.log(q);
+// console.log(q.peek());
+// console.log(q.size());
+//console.log(q.isEmpty());
