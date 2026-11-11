@@ -12,4 +12,23 @@ function reverseWithStack(str) {
     }
     return result;
 }
-console.log(reverseWithStack("hello"));
+//console.log(reverseWithStack("hello"));
+// Write isValid(s). The string contains only ( ) [ ] { }. 
+// Return true if every opening bracket is closed by the same type, in the correct order.
+function isValid(s) {
+    let stack = [];
+    const pairs = {
+        ")" : "(", 
+        "]" : "[",
+        "}" : "{",
+    }
+    for (let ch of s) {
+         if(ch === "(" || ch === "[" || ch === "{") {
+            stack.push(ch);
+         } else  {
+            if( stack.pop() !== pairs[ch]) return false;
+         }
+    }
+    return stack.length === 0;
+} 
+//console.log(isValid("{[()]}"));
