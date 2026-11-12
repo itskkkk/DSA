@@ -10,3 +10,10 @@ function power(base, exp) {
     return base * power(base, exp - 1);
 }
 // console.log(power(3, 4));
+// Write reverseStr(str) that reverses a string recursively. No loops, no .reverse().
+
+function reverseStr(str) {
+    if(str.length === 0) return "";
+    return reverseStr(str.slice(1)) + str[0]
+}
+// console.log(reverseStr("hellow");
