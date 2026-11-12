@@ -91,4 +91,21 @@ function evalRPN(tokens) {
     }
     return stack.pop();
 }
-console.log(evalRPN(["15","4","5","9","8","-","*","4","/","+","/"])); 
+//console.log(evalRPN(["15","4","5","9","8","-","*","4","/","+","/"])); 
+
+// Write dailyTemperatures(temps). 
+// For each day, return how many days you must wait for a warmer temperature. Use 0 if there is no warmer day.
+function dailyTemperatures(temps) {
+    const result = new Array(temps.length).fill(0);
+    const stack = [];
+    for(let i=0; i<temps.length; i++) {
+       while( stack.length > 0 && temps[i] > temps[stack[stack.length - 1]]) {
+           const prevday = stack.pop();
+           result[prevday] = i - prevday;
+       };
+       stack.push(i);
+    }
+    return result;
+}
+
+//console.log(dailyTemperatures([73,72,75,71,69,72,76,73]));
