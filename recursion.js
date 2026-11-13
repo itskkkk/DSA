@@ -17,3 +17,15 @@ function reverseStr(str) {
     return reverseStr(str.slice(1)) + str[0]
 }
 // console.log(reverseStr("hellow");
+// Write flatten(arr) that fully flattens an array nested at any depth. No .flat(). 
+// A loop is allowed here, but each nested array must be handled by recursion.
+function flatten(arr) {
+   const result = [];
+   for(let item of arr) {
+      if(Array.isArray(item)) {
+         result.push(...flatten(item));
+      } else result.push(item);
+   }
+   return result;
+}
+//console.log(flatten([1,[2,[3,[4,5]]]]));
