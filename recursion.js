@@ -29,3 +29,24 @@ function flatten(arr) {
    return result;
 }
 //console.log(flatten([1,[2,[3,[4,5]]]]));
+// Write subsets(arr), which returns every possible subset (the power set) of an array of unique numbers.
+
+function subsets(arr) {
+  if (arr.length === 0) {
+    return [[]];
+  }
+
+  const first = arr[0];
+  const remaining = subsets(arr.slice(1));
+
+  const result = [];
+
+  for (let subset of remaining) {
+    result.push(subset);
+    result.push([first, ...subset]);
+  }
+
+  return result;
+}
+
+//console.log(subsets([1, 2, 3]));
