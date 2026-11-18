@@ -74,3 +74,16 @@ class LinkedList {
 
 // console.log(list.head);
 
+// Write reverseList(head), which reverses a linked list in place and returns the new head. 
+// Rewire the next pointers. Don't copy values into an array.
+function reverseList(head) {
+    let prev = null; 
+    let cur = head;
+    while(cur !== null) {
+        const next = cur.next;
+        cur.next = prev;
+        prev = cur;
+        cur = next;
+    }
+    return prev;
+}
