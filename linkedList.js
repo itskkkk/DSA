@@ -98,3 +98,15 @@ function middleNode(head) {
     }
     return slow;
 }
+
+// Write hasCycle(head), which returns true if the list loops back on itself somewhere (a node's next points to an earlier node). 
+// It must use O(1) extra space, so no Set or Map.
+function hasCycle(head) {
+    let slow = head, fast = head;
+    while(fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow === fast) return true;
+    }
+    return false;
+}
