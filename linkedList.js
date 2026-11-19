@@ -87,3 +87,14 @@ function reverseList(head) {
     }
     return prev;
 }
+
+// Write middleNode(head), which returns the middle node of the list. 
+// If there are two middles, return the second one. Do it in one pass using fast and slow pointers.
+function middleNode(head) {
+    let slow = head, fast = head;
+    while(fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
