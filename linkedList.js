@@ -110,3 +110,22 @@ function hasCycle(head) {
     }
     return false;
 }
+
+// Write mergeTwoLists(l1, l2), which merges two sorted linked lists into one sorted list by splicing the existing nodes together, 
+// and returns the head
+function mergeTwoLists(l1, l2) {
+    const dummy = new Node(0);
+    let tail = dummy;
+    while(l1 !== null && l2 !== null) {
+        if(l1.val <= l2.val) {
+            tail.next = l1;
+            l1 = l1.next;
+        } else {
+            tail.next = l2;
+            l2 = l2.next;
+        }
+        tail = tail.next;
+    }
+    tail.next = l1 !== null ? l1 : l2
+    return dummy.next;
+}
