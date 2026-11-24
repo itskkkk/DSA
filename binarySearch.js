@@ -23,3 +23,33 @@ function searchInsert(nums, target) {
    return lo;
 }
 //console.log(searchInsert([1,3,5,6], 7));
+// Write searchRange(nums, target), which returns [first, last], 
+// the first and last index of target in a sorted array that may contain duplicates, or [-1, -1]. 
+// O(log n), so you can't scan along the duplicates
+function searchRange(nums, target) {
+    function lowerBound(nums, target) {
+        let lo = 0, hi = nums.length;
+        while(lo < hi) {
+            const mid = Math.floor((lo + hi)/2);
+            if(nums[mid] >= target) hi = mid;
+            else lo =  mid + 1;
+        }
+        return lo;
+    }
+    const first = lowerBound(nums, target);
+    if (first === nums.length || nums[first] !== target) return [-1, -1];
+    function upperBound(nums, target) {
+        let lo = 0, hi = nums.length;
+        while(lo < hi) {
+            const mid = Math.floor((lo + hi)/2);
+            if(nums[mid] > target) hi = mid;
+            else lo = mid + 1;
+        }
+        return lo;
+    }
+    const last = upperBound(nums, target) - 1;
+
+    return [first, last];
+}
+
+//console.log(searchRange([5,7,7,8,8,10], 7));
