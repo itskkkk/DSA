@@ -53,3 +53,15 @@ function searchRange(nums, target) {
 }
 
 //console.log(searchRange([5,7,7,8,8,10], 7));
+// Versions 1..n exist, and from some version onward every version is bad. You're given isBadVersion(v) (it returns true or false). 
+// Write firstBadVersion(n, isBadVersion), which returns the first bad version using as few calls as possible.
+
+function firstBadVersion(n, isBadVersion) {
+    let lo = 1, hi = n;
+    while(lo < hi) {
+        const mid = Math.floor((lo + hi)/2);
+        if(isBadVersion(mid)) hi = mid;
+        else lo = mid + 1;
+    }
+    return lo
+}
