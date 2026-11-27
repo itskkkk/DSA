@@ -65,3 +65,23 @@ function firstBadVersion(n, isBadVersion) {
     }
     return lo
 }
+
+// Koko loves bananas. There are piles of bananas in piles, and she has h hours. 
+// Each hour she picks one pile and eats k bananas from it (if the pile has fewer than k, she finishes it and wastes the rest of the hour). 
+// Write minEatingSpeed(piles, h), which returns the smallest integer k that lets her finish all piles within h hours.
+function minEatingSpeed(piles, h) {
+    let lo = 1, hi = Math.max(...piles);
+    while (lo < hi) {
+        const mid = Math.floor((lo + hi)/2);
+        let hours = 0;
+        for(let pile of piles) {
+            hours += Math.ceil(pile/mid);
+        }
+        if(hours <= h) hi = mid;
+        else lo = mid + 1;
+    }
+    return lo;
+}
+
+// console.log(minEatingSpeed([3,6,7,11], 8)); 
+// console.log(minEatingSpeed([30,11,23,4,20], 6));
